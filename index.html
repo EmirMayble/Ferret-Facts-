@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Ferret Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            z-index: 1;
+        }
+        .star {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Daily Ferret Facts</h1>
+        <h2 id="random-fact"></h2>
+        <button onclick="updateFact()">Get a New Fact</button>
+    </div>
+    <audio id="background-music" loop>
+        <source src="fun_music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <script>
+        const facts = [
+            "Ferrets are part of the weasel family.",
+            "Ferrets sleep 14-18 hours a day.",
+            "Ferrets have been domesticated for over 2,000 years.",
+            "A group of ferrets is called a 'business'.",
+            "Ferrets can squeeze through very small openings.",
+            "Ferrets are very playful and curious animals.",
+            "Ferrets have a lifespan of 6-10 years.",
+            "Ferrets are carnivores and require a meat-based diet.",
+            "Ferrets have a high metabolism and need to eat frequently.",
+            "Ferrets can be litter trained, similar to cats.",
+            "Ferrets have a natural musky odor, which can be reduced with regular bathing.",
+            "Ferrets are illegal to own as pets in some places, such as California and Hawaii.",
+            "Ferrets are known for their playful and curious nature.",
+            "Ferrets can catch colds and flu from humans.",
+            "Ferrets have a flexible spine, allowing them to twist and turn easily.",
+            "Ferrets shed their fur twice a year, in the spring and fall.",
+            "Ferrets are prone to certain health issues, such as adrenal disease and insulinoma.",
+            "Ferrets can be vaccinated against rabies and distemper.",
+            "Ferrets have been used in scientific research for many years.",
+            "Ferrets are used to run cables through pipes in some industries.",
+            "Ferrets have a playful and mischievous nature.",
+            "Ferrets can be trained to do tricks, such as rolling over and fetching.",
+            "Ferrets have a lifespan of 6-10 years.",
+            "Ferrets are obligate carnivores, meaning they must eat meat to survive.",
+            "Ferrets have a high metabolism and need to eat frequently.",
+            "Ferrets can be litter trained, similar to cats.",
+            "Ferrets have a natural musky odor, which can be reduced with regular bathing.",
+            "Ferrets are illegal to own as pets in some places, such as California and Hawaii.",
+            "Ferrets are known for their playful and curious nature.",
+            "Ferrets can catch colds and flu from humans.",
+            "Ferrets have a flexible spine, allowing them to twist and turn easily.",
+            "Ferrets shed their fur twice a year, in the spring and fall.",
+            "Ferrets are prone to certain health issues, such as adrenal disease and insulinoma.",
+            "Ferrets can be vaccinated against rabies and distemper.",
+            "Ferrets have been used in scientific research for many years.",
+            "Ferrets are used to run cables through pipes in some industries.",
+            "Ferrets have a playful and mischievous nature.",
+            "Ferrets can be trained to do tricks, such as rolling over and fetching.",
+            "Ferrets have a lifespan of 6-10 years.",
+            "Ferrets are obligate carnivores, meaning they must eat meat to survive.",
+            "Ferrets have a high metabolism and need to eat frequently.",
+            "Ferrets can be litter trained, similar to cats.",
+            "Ferrets have a natural musky odor, which can be reduced with regular bathing.",
+            "Ferrets are illegal to own as pets in some places, such as California and Hawaii.",
+            "Ferrets are known for their playful and curious nature.",
+            "Ferrets can catch colds and flu from humans.",
+            "Ferrets have a flexible spine, allowing them to twist and turn easily.",
+            "Ferrets shed their fur twice a year, in the spring and fall.",
+            "Ferrets are prone to certain health issues, such as adrenal disease and insulinoma."
+        ];
+
+        function getRandomFact() {
+            return facts[Math.floor(Math.random() * facts.length)];
+        }
+
+        function updateFact() {
+            document.getElementById('random-fact').textContent = getRandomFact();
+        }
+
+        document.getElementById('random-fact').textContent = getRandomFact();
+
+        function createStar() {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.left = `${Math.random() * 100}vw`;
+            star.style.animationDuration = `${Math.random() * 2 + 3}s`;
+            star.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            document.body.appendChild(star);
+
+            setTimeout(() => {
+                star.remove();
+            }, 5000);
+        }
+
+        setInterval(createStar, 100);
+
+        // Play background music when the page loads
+        window.onload = function() {
+            const backgroundMusic = document.getElementById('background-music');
+            backgroundMusic.play();
+        };
+    </script>
+</body>
+</html>
